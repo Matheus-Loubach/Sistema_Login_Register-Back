@@ -14,7 +14,7 @@ conn();
 const routes = require("./routes/router")
 app.use('/Api', routes);
 
-app.listen(3000, function(){
-    console.log('Servidor Online porta 3000');
+app.listen(8080, function(){
+    console.log('Servidor Online porta 8080');
 })
 
