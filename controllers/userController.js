@@ -91,14 +91,14 @@ const ServiceController = {
         const user = await User.findOne({ name });
 
         if (!user) {
-            return res.status(401).json({ message: 'Usuario ou Senha Incorreta' });
+            return res.status(401).json({ message: 'Usuário ou Senha Incorreta' });
         }
 
         // verificar senha do usuário
         const passwordMatches = await bcrypt.compare(password, user.password);
 
         if (!passwordMatches) {
-            return res.status(401).json({ message: 'Usuario ou Senha Incorreta' });
+            return res.status(401).json({ message: 'Usuário ou Senha Incorreta' });
         }
 
         //return user with token
