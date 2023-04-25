@@ -36,7 +36,7 @@ const ServiceController = {
             return res.status(422).json("E-mail e senha são obrigatórios");
         }
 
-        if(!password){
+        if (!password) {
             return res.status(422).json("A senha deve ter pelo menos 8 caracteres, Letra maiúscula e um caractere especial");
         }
 
@@ -71,12 +71,9 @@ const ServiceController = {
 
             }
 
-            //return user with token
-            res.status(200).json({
-                _id: NewUser._id,
-                token: GenenateToken(NewUser._id),
-                msg: res.status(200).json("Cadastro Feito com sucesso"),
-            })
+
+            //return success
+            res.status(201).json({ message: "Cadastro feito com sucesso" });
 
 
         } catch (error) {
@@ -86,6 +83,7 @@ const ServiceController = {
     // rota para login
     login: async (req, res) => {
         const { name, password } = req.body;
+        console.log('name back', name);
 
         // procurar usuário pelo nome
         const user = await User.findOne({ name });
@@ -145,7 +143,6 @@ const ServiceController = {
     //get curret logged in user
     getcurrentUser: async (req, res) => {
         const user = req.user;
-
         res.status(200).json(user);
     },
 
